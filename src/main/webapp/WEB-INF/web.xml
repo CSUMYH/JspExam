@@ -1,0 +1,37 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>CustomerServlete</servlet-name>
+  	<display-name>CustomerServlete</display-name>
+  	<description></description>
+  	<servlet-class>com.mao.Servlets.CustomerServlete</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<display-name>LoginServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.mao.Servlets.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ShowFilmServlet</servlet-name>
+  	<display-name>ShowFilmServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.mao.Servlets.ShowFilmServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CustomerServlete</servlet-name>
+  	<url-pattern>/CustomerServlete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ShowFilmServlet</servlet-name>
+  	<url-pattern>/ShowFilmServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
