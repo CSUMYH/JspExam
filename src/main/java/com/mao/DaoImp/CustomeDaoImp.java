@@ -35,6 +35,7 @@ public class CustomeDaoImp implements CustomerDao{
 				cb.setStore_id(result.getInt("store_id"));
 				list.add(cb);
 			}
+			Connect.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -6,8 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mao.Service.CustomerLogin;
+import com.mao.Service.ShowFilmService;
 
 /**
  * Servlet implementation class LoginServlet
@@ -36,13 +38,13 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CustomerLogin ctl = new CustomerLogin();
 		String username =  request.getParameter("username").toString();
-		System.out.println(username);
-		if(ctl.Login(username)==true){
-			System.out.println(1);
-			request.getRequestDispatcher("hello.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		if(ctl.Login(username)==true){	
+			session.setAttribute("user",username);
+			session.setAttribute("film", new ShowFilmService().showFilm());
+			request.getRequestDispatcher("film.jsp").forward(request, response);
 		}else{
-			System.out.println(2);
-			
+			System.out.println(2);			
 			request.getRequestDispatcher("login_faild.jsp").forward(request, response);
 		}
 	}

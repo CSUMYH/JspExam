@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/Login.jsp=UTF-8
+encoding//src/main/webapp/add_film.jsp=UTF-8
+encoding//src/main/webapp/add_success.jsp=UTF-8
+encoding//src/main/webapp/film.jsp=UTF-8
 encoding//src/main/webapp/index.jsp=UTF-8
 encoding//src/main/webapp/login_faild.jsp=UTF-8

@@ -3,7 +3,19 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
   <display-name>Archetype Created Web Application</display-name>
+
+  <filter>
+  	<filter-name>LoginFilter</filter-name>
+  	<display-name>LoginFilter</display-name>
+  	<description></description>
+  	<filter-class>com.mao.Filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>LoginFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
   <servlet>
   	<servlet-name>CustomerServlete</servlet-name>
   	<display-name>CustomerServlete</display-name>
@@ -22,6 +34,30 @@
   	<description></description>
   	<servlet-class>com.mao.Servlets.ShowFilmServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>DeleteFilmServlet</servlet-name>
+  	<display-name>DeleteFilmServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.mao.Servlets.DeleteFilmServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AddFilmServlet</servlet-name>
+  	<display-name>AddFilmServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.mao.Servlets.AddFilmServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ToAddFilmServlet</servlet-name>
+  	<display-name>ToAddFilmServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.mao.Servlets.ToAddFilmServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>EditServlet</servlet-name>
+  	<display-name>EditServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.mao.Servlets.EditServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>CustomerServlete</servlet-name>
   	<url-pattern>/CustomerServlete</url-pattern>
@@ -34,4 +70,23 @@
   	<servlet-name>ShowFilmServlet</servlet-name>
   	<url-pattern>/ShowFilmServlet</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeleteFilmServlet</servlet-name>
+  	<url-pattern>/DeleteFilmServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddFilmServlet</servlet-name>
+  	<url-pattern>/AddFilmServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ToAddFilmServlet</servlet-name>
+  	<url-pattern>/ToAddFilmServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditServlet</servlet-name>
+  	<url-pattern>/EditServlet</url-pattern>
+  </servlet-mapping>
+    <welcome-file-list>
+  	<welcome-file>index.jsp</welcome-file>
+  	</welcome-file-list>
 </web-app>

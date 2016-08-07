@@ -10,9 +10,14 @@
 	}
  </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 </head>
 <body>
-<h2>Hello World!</h2>
-<a href="Login.jsp">登录页面</a>
+<tr>
+编辑成功！！！ 
+</tr>
+<tr>
+<a href="ShowFilmServlet">返回</a>
+</tr>
 </body>
 </html>

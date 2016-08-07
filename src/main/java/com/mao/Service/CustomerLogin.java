@@ -13,7 +13,7 @@ public class CustomerLogin {
 	boolean flag =false;
     List<CustomerBean> list =  cdi.getCustomer(SQLUtil.get_customer);
     for(int i =0 ;i<list.size();i++){
-    	System.out.println(list.get(i).getFirst_name());
+ 
     	if(list.get(i).getFirst_name().equals(name)){
     		flag = true;
     	}

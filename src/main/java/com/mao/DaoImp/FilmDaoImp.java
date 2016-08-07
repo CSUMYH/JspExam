@@ -33,11 +33,19 @@ public class FilmDaoImp implements FilmDao {
 			fb.setLanguage_name(rs.getString("language_name"));
 			list.add(fb);
 			}
+			
+			Connect.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list	;
+	}
+	
+	public int updateFilm(String sql,Object...strn){
+		int i =Connect.excutUpdate(sql, strn);
+		Connect.close();
+		return i;
 	}
 
 }

@@ -16,7 +16,9 @@ public  class Connect {
 	private static String url="jdbc:mysql://localhost:3306/sakila";
 	
 	private static Connect cn = new Connect();
-	
+	private static Connection cnt ;
+	private static ResultSet result;
+	private static PreparedStatement pts;
 	private Connect(){
 		
 	}
@@ -27,7 +29,7 @@ public  class Connect {
 	}
 	 
 	public static Connection getConnection(){
-		Connection cnt = null;
+		
 		try {
 			Class.forName(Driver);
 			cnt = DriverManager.getConnection(url, username, password);
@@ -43,11 +45,11 @@ public  class Connect {
 	}
 	
 	public static ResultSet excutQuey(String sql,Object ... strn){ 
-		ResultSet result=null;
+	
 	try {
-		PreparedStatement pts= (PreparedStatement) Connect.getConnection().prepareStatement(sql);
-		for(int i=1;i<strn.length;i++){
-		pts.setObject(i, strn[i]);
+		pts = (PreparedStatement) Connect.getConnection().prepareStatement(sql);
+		for(int i=0;i<strn.length;i++){
+		pts.setObject(i+1, strn[i]);
 		}	
 		result = pts.executeQuery();
 	} catch (SQLException e) {
@@ -57,7 +59,31 @@ public  class Connect {
 		return result;
 	}
 	
-	public static void excutUpdate(String sql,Object... strn){
-		
+	
+	public static int excutUpdate(String sql,Object... strn){
+		int count =0;
+		try {
+			pts = Connect.getConnection().prepareStatement(sql);
+			for(int i = 0 ; i< strn.length;i++){
+				pts.setObject(i+1, strn[i]);
+			}
+		count = pts.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+	
+	public static void close(){
+		try {
+			result.close();
+			pts.close();
+			cnt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

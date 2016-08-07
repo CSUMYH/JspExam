@@ -1,31 +1,26 @@
 package com.mao.Servlets;
 
 import java.io.IOException;
-import java.util.List;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.mao.Beans.FilmBean;
-import com.mao.Beans.LanguageBean;
-import com.mao.DaoImp.FilmDaoImp;
-import com.mao.SQLUtil.SQLUtil;
-import com.mao.Service.ShowFilmService;
-import com.mao.Service.ShowLanguageService;
+import com.mao.Service.AddFilmService;
+import com.mao.Service.SelectLanguageIdByNameService;
 
 /**
- * Servlet implementation class ShowFilmServlet
+ * Servlet implementation class AddFilmServlet
  */
-public class ShowFilmServlet extends HttpServlet {
+public class AddFilmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowFilmServlet() {
+    public AddFilmServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,10 +36,18 @@ public class ShowFilmServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		session.setAttribute("film", new ShowFilmService().showFilm());
-		request.getRequestDispatcher("film.jsp").forward(request, response);	
+		String title = request.getParameter("title");
+		String description = request.getParameter("description");
+		String language_name = request.getParameter("language");
+		
+		int i = new SelectLanguageIdByNameService().selectIdByName(language_name);
+		Date nowTime = new Date(System.currentTimeMillis());
+		 if(new AddFilmService().addFilm(title,description,i)){
+			 request.getRequestDispatcher("add_success.jsp").forward(request, response);
+		 }
+		 else{
+			 request.getRequestDispatcher("add_faild.jsp").forward(request, response);
+		 }
 	}
 
 }

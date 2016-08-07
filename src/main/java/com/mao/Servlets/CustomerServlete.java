@@ -40,6 +40,7 @@ public class CustomerServlete extends HttpServlet {
 	  CustomeDaoImp cdi = new CustomeDaoImp();
 	  HttpSession session = request.getSession();
 	  session.setAttribute("customer",cdi.getCustomer(SQLUtil.get_customer));
+	  session.setAttribute("language",cdi.getCustomer(SQLUtil.get_customer));
 	  request.getRequestDispatcher("hello.jsp").forward(request, response);
 	}
 

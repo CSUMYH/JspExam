@@ -3,14 +3,14 @@ package com.mao.Beans;
 import java.util.Date;
 
 public class LanguageBean {
-private int languae_id;
+private int language_id;
 private String name	;
 private Date last_update;
-public int getLanguae_id() {
-	return languae_id;
+public int getLanguage_id() {
+	return language_id;
 }
-public void setLanguae_id(int languae_id) {
-	this.languae_id = languae_id;
+public void setLanguage_id(int language_id) {
+	this.language_id = language_id;
 }
 public String getName() {
 	return name;
