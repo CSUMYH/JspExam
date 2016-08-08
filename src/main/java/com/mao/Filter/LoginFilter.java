@@ -41,11 +41,10 @@ public class LoginFilter implements Filter {
 	    HttpSession session = req.getSession(); 
 
 	    //从session里取的用户名信息 
-	    String username = (String) session.getAttribute("user"); 
+	    String username = (String) session.getAttribute("user");
 	    StringBuffer url = req.getRequestURL();
 	    //判断如果没有取到用户信息,就跳转到登陆页面 
-	    	
-	    if(url.indexOf("Login")>0){
+	    if(url.indexOf("Login.jsp")>0||url.indexOf("index.jsp")>0||url.indexOf("LoginServlet")>0){
 	    	 chain.doFilter(request,response); 
 	    	 return;
 	    }

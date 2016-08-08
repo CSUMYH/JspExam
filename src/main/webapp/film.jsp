@@ -93,7 +93,10 @@ table.altrowstable td {
 			<td><span><%=fb.getDescription()%></span></td>
 			<td><span><%=fb.getLanguage_name()%></span></td>
 			<td><a href="DeleteFilmServlet?film_id=<%= fb.getFilm_id()%>">删除</a></td>
-			<td><a href="EditServlet?title=<%= fb.getTitle()%>&description=<%=fb.getDescription()%>&language= <%=fb.getLanguage_name()%>">编辑</a></td>
+			<td><a href="EditServlet?title=<%= fb.getTitle()%>&description=<%=fb.getDescription()%>&language= <%=fb.getLanguage_name()%>&film_id=<%=fb.getFilm_id()%>">编辑</a></td>
+			
+			
+			
 		</tr>
 		<% 
 	}

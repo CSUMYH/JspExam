@@ -13,4 +13,5 @@ public class SQLUtil {
 	public static final String get_inventory_id	= "select  inventory_id from inventory where film_id =?";
 	public static final String del_rental_by_inventoryid = "delete from rental where inventory_id = ?";
 	public static final String del_inventory_by_filmid= "delete from inventory where film_id = ?";
+	public static final String update_film ="update film set title = ? , description =? , language_id = ? where film_id =? ";
 }

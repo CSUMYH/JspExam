@@ -13,8 +13,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mao.Beans.FilmBean;
+import com.mao.Service.ShowLanguageService;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -48,6 +50,13 @@ public class EditServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String description = request.getParameter("description");
 		String language = request.getParameter("language");
+		String film_id = request.getParameter("film_id");
+		
+		System.out.println(film_id);
+		int id = Integer.valueOf(film_id);
+		System.out.println(id);
+		HttpSession session = request.getSession();
+		session.setAttribute("edit_id",id );
 		Configuration cf = new Configuration();
 		cf.setDirectoryForTemplateLoading(new File("templates"));
 		
@@ -57,11 +66,17 @@ public class EditServlet extends HttpServlet {
 		fb.setTitle(title);
 		fb.setDescription(description);
 		fb.setLanguage_name(language);
+		System.out.println(title);
+		System.out.println(description);
+		System.out.println(language);
+		ShowLanguageService sls = new ShowLanguageService();
+		List language_list = sls.showLanguage();
 		list.add(fb);
 		root.put("film", list);
+		root.put("lan", language_list);
 		Template t1 = cf.getTemplate("a.ftl");
-		
-		Writer out =  new OutputStreamWriter( System.out);
+		response.setContentType("text/html;charset="+t1.getEncoding());
+		Writer out = response.getWriter();
 		try {
 			t1.process(root, out);
 		} catch (TemplateException e) {
@@ -70,7 +85,6 @@ public class EditServlet extends HttpServlet {
 		}
 		out.flush();
 		out.close();
-		request.getRequestDispatcher("edit_success.jsp").forward(request, response);
 	}
 
 }

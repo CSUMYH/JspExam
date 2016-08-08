@@ -11,9 +11,6 @@ public class ShowLanguageService {
 		LanguageDaoImp ldi = new LanguageDaoImp();
 	
 		List<LanguageBean> list =ldi.getLanguage(SQLUtil.get_language);
-		for(int i =0 ;i<list.size();i++){
-			System.out.println(i+":"+list.get(i).getName());
-		}
 		return list;
 	}
 }
